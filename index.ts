@@ -19,7 +19,9 @@ if (Deno.serve) {
     }
   }
 
-  for await (let conn of Deno.listen({ port: 80 })) {
+  for await (let conn of Deno.listen({
+    port: 80
+  })) {
     try {
       handleHttp(conn);
     } catch (e) {
