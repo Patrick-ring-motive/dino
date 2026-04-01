@@ -63,8 +63,7 @@ const handler: Handler = async (request) => {
       url: urlToObject(url),
       headers: sortObject(Object.fromEntries(request.headers)),
       body: reqBody.byteLength > 0 ?
-        new TextDecoder().decode(reqBody) :
-        null,
+        new TextDecoder().decode(reqBody) : null,
     },
     response: {
       status,
