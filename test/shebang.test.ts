@@ -1,9 +1,11 @@
-import { parse } from '../src/shebang';
+import {
+  parse
+} from '../src/shebang';
 
 describe('shebang', () => {
-    it('should parse basic', () => {
-        const parsed = parse('#!/usr/bin/env deno run --version=v1.2.3 --location http://example.com/test')
-        expect(parsed).toMatchInlineSnapshot(`
+  it('should parse basic', () => {
+    const parsed = parse('#!/usr/bin/env deno run --version=v1.2.3 --location http://example.com/test')
+    expect(parsed).toMatchInlineSnapshot(`
 Object {
   "--version": "v1.2.3",
   "_": Array [
@@ -13,7 +15,7 @@ Object {
   "env": Object {},
 }
 `);
-        expect(Array.from(parsed)).toMatchInlineSnapshot(`
+    expect(Array.from(parsed)).toMatchInlineSnapshot(`
 Array [
   "--version",
   "v1.2.3",
@@ -21,10 +23,10 @@ Array [
   "http://example.com/test",
 ]
 `);
-    });
-    it('should parse with env vars', () => {
-        const parsed = parse('#!/usr/bin/env DENO_DIR=/tmp ANOTHER="with space" deno run')
-        expect(parsed).toMatchInlineSnapshot(`
+  });
+  it('should parse with env vars', () => {
+    const parsed = parse('#!/usr/bin/env DENO_DIR=/tmp ANOTHER="with space" deno run')
+    expect(parsed).toMatchInlineSnapshot(`
 Object {
   "_": Array [],
   "env": Object {
@@ -33,6 +35,6 @@ Object {
   },
 }
 `);
-        expect(Array.from(parsed)).toHaveLength(0);
-    });
+    expect(Array.from(parsed)).toHaveLength(0);
+  });
 });
